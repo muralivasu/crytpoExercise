@@ -7,8 +7,8 @@ Feature: To run a binary file and validate the response
     Then verify the response matches with the expected result "<eResult>"
     Examples:
     |filepath                                                    |eResult|
-    |./sample.bin                                                |200    |
-    |./sample                                                    |200    |
+    |./sample.exe                                                |It works!!!|
+    |./sample                                                    |It works!!!|
     #Binary file with invalid data
-    |./sample.bin                                                |200    |
-    |                                                            |200    |
+    |./sample.exe                                                |It works!!!|
+    |                                                            |It works!!!|
