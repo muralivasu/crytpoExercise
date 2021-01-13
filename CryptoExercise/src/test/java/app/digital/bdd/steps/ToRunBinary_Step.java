@@ -21,7 +21,7 @@ public class ToRunBinary_Step{
 
         @Given("^a valid binary file \"([^\"]*)\" is provided$")
         public void CheckValidBinaryFileIsProvided(String filepath) throws Throwable {
-            if ((filepath != "") && (filepath.endsWith(".bin"))) {
+            if ((filepath != "") && (filepath.endsWith(".exe"))) {
                 Filepath = filepath;
             } else {
                 System.out.println("Invalid file");
@@ -51,11 +51,18 @@ public class ToRunBinary_Step{
         }
 
       @Then("^verify the response matches with the expected result \"([^\"]*)\"$")
-       public void verifyTheResponseMatchesWithTheExpectedResult(String eResult) throws Throwable {
-          if(Output.toString().contains(eResult))
-           { System.out.println("it works!!!"); }
-           else { System.out.println("Return code is not 200:" +Output); }
-       }
+       public void verifyTheResponseMatchesWithTheExpectedResult(String eResult){
+         try {
+             if (Output.toString().contains(eResult)) {
+                 System.out.println(" Responose status code was as expected,It works!!!");
+             } else {
+                 System.out.println("Response status code was not 20O. It was " +Output.toString());
+             }
+         }catch (Exception e)
+         {
+             e.printStackTrace();
+         }
+        }
 
 }
 
